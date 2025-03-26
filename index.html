@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tip Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- <link rel="shortcut icon" href="/images/favicon-32x32.png" type="image/x-icon"> -->
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
-        <div class="container">
-
-            <!-- Calculate Tip Section -->
-            <div class="calculate-tip">
-                <p>Bill</p>
-                <input type="text" placeholder="0">
-                <p>Select Tip %</p>
-                <div class="select-tip">
-                    <button>5%</button>
-                    <button>10%</button>
-                    <button>15%</button>
-                    <button>25%</button>
-                    <button>50%</button>
-                    <input type="text" placeholder="Custom">
-                </div>
-                <p>Number of People</p>
-                <input type="text" placeholder="0">
-            </div>
-
-            <!-- Display Tip Section -->
-            <div class="display-tip">
-
-                <!-- Tip Amount -->
-                <div class="tip-amount-container">
-                    <div class="tip-amount">
-                        <p>Tip Amount</p>
-                        <p>/ Person</p>
-                    </div>
-                    <div class="display-tip-amount">
-                        <p>$0.00</p>
-                    </div>
-                </div>
-
-                <!-- Total -->
-                <div class="total-amount-container">
-                    <div class="total-amount">
-                        <p>Total</p>
-                        <p>/ Person</p>
-                    </div>
-                    <div class="display-total-amount">
-                        <p>$0.00</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <!-- Calculate Tip Section -->
+        <div class="calculate-tip">
+          <p>Bill</p>
+          <input type="text" placeholder="0" class="bill-input" />
+          <p>Select Tip %</p>
+          <div class="select-tip">
+            <button>5%</button>
+            <button>10%</button>
+            <button>15%</button>
+            <button>25%</button>
+            <button>50%</button>
+            <input type="text" placeholder="Custom" />
+          </div>
+          <p>Number of People</p>
+          <input type="text" placeholder="0" class="people-input" />
         </div>
+
+        <!-- Display Tip Section -->
+        <div class="display-tip">
+          <!-- Tip Amount -->
+          <div class="amounts-container">
+            <div class="tip-amount-container">
+              <div class="tip-amount">
+                <p>Tip Amount</p>
+                <p>/ Person</p>
+              </div>
+              <div class="display-tip-amount">$0.00</div>
+            </div>
+
+            <!-- Total -->
+            <div class="total-amount-container">
+              <div class="total-amount">
+                <p>Total</p>
+                <p>/ Person</p>
+              </div>
+              <div class="display-total-amount">$0.00</div>
+            </div>
+          </div>
+          <button class="reset">RESET</button>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
