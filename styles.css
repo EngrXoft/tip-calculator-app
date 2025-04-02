@@ -57,6 +57,8 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .container {
@@ -66,6 +68,38 @@ input:focus {
   box-shadow: 5px 5px 30px hsla(186, 14%, 56%, 0.5);
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width: 560px) {
+  .wrapper {
+    display: block;
+    padding-top: 3rem;
+  }
+
+  .wrapper > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  .container {
+    flex-direction: column;
+    border-radius: 2rem 2rem 0 0;
+    padding: 1.2rem;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 1024px) {
+  .wrapper {
+    height: 100%;
+    gap: 3rem;
+    padding: 3rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
 }
 
 .active {
@@ -96,6 +130,17 @@ input:focus {
 }
 
 /* inputs */
+.input-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.input-container svg {
+  position: absolute;
+  margin-left: 1rem;
+}
+
 .bill-input,
 .people-input {
   width: 100%;
@@ -104,6 +149,20 @@ input:focus {
 .calculate-tip {
   width: 50%;
   height: auto;
+}
+
+@media (max-width: 560px) {
+  .calculate-tip {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 1024px) {
+  .calculate-tip {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 .calculate-tip p {
@@ -118,6 +177,12 @@ input:focus {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   width: 100%;
+}
+
+@media (max-width: 350px) {
+  .select-tip {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }
 
 .select-tip input,
@@ -164,6 +229,12 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (max-width: 560px) {
+  .display-tip {
+    width: 100%;
+  }
 }
 
 .tip-amount-container,
