@@ -4,7 +4,7 @@ A Tip Calculator App Using HTML for structure, CSS for styling and JavaScript fo
 
 ### Screenshot
 
-- Screenshot: ![App Screenshot](/images/screenshot.png)
+![App Screenshot](/images/screenshot.png)
 
 ### Links
 
