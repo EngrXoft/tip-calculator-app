@@ -1,7 +1,8 @@
 const bill = document.querySelector('.bill-input');
 const numberOfPeople = document.querySelector('.people-input');
 const tipBtn = document.querySelectorAll('.tip-btn');
-const customTip = document.querySelector('.custom.tip');
+const peopleValidateText = document.querySelector('.validate-text');
+const customTip = document.querySelector('.custom-tip');
 const calculateBtn = document.querySelector('.btn-calculate');
 const displayTipAmount = document.querySelector('.display-tip-amount');
 const displayTotalAmount = document.querySelector('.display-total-amount');
@@ -9,8 +10,10 @@ const resetBtn = document.querySelector('.btn-reset');
 let billAmount = 0;
 let tipAmount = 0;
 let peopleNumber = 0;
+let customTipValue = 0;
 
 resetBtn.disabled = true;
+peopleValidateText.style.display = 'none';
 
 const onInput = (e) => {
   billAmount = parseFloat(e.target.value) || 0;
@@ -30,14 +33,26 @@ const selectTip = (e) => {
   checkResetState();
 };
 
-// const inputCustomTip = (e) => {
-//   console.log(e.target.value);
-// };
+const inputCustomTip = (e) => {
+  customTipValue = parseFloat(e.target.value) || 0;
+  tipAmount = (customTipValue / 100) * billAmount;
+  tipBtn.forEach((button) => {
+    button.classList.remove('active');
+  });
+
+  checkResetState();
+};
 
 const people = (e) => {
   peopleNumber = parseFloat(e.target.value);
   if (isNaN(peopleNumber) || peopleNumber < 1) {
-    alert('Please enter a valid number greater than or equal to 1');
+    peopleValidateText.style.display = 'flex';
+    peopleValidateText.style.color = '#ff4545';
+    numberOfPeople.style.border = '2px solid #ff4545'
+  } else if (peopleNumber >= 1) {
+    peopleValidateText.style.display = 'none';
+    numberOfPeople.style.border = 'none'
+
     return;
   }
 
@@ -45,7 +60,7 @@ const people = (e) => {
 };
 
 // Calculate
-const calculateTip = () => {
+const calculateTip = (e) => {
   let tipPerPerson = tipAmount / peopleNumber;
   displayTipAmount.textContent = `$${tipPerPerson.toFixed(2)}`;
   displayTotalAmount.textContent = `$${(
@@ -58,8 +73,10 @@ const resetCalculation = () => {
   billAmount = 0;
   tipAmount = 0;
   peopleNumber = 0;
+  customTipValue = 0;
 
   bill.value = '';
+  customTip.value = '';
   numberOfPeople.value = '';
 
   displayTipAmount.textContent = '$0.00';
@@ -73,19 +90,25 @@ const resetCalculation = () => {
 };
 
 const checkResetState = () => {
-  if (bill.value || numberOfPeople.value || document.querySelector('.active')) {
+  if (
+    bill.value ||
+    numberOfPeople.value ||
+    customTip.value ||
+    document.querySelector('.active')
+  ) {
     resetBtn.disabled = false;
     resetBtn.classList.remove('btn-reset-disabled');
   } else {
     resetBtn.disabled = true;
-  resetBtn.classList.add('btn-reset-disabled');
-
+    resetBtn.classList.add('btn-reset-disabled');
   }
 };
 
+checkResetState();
+
 // EventListeners
 bill.addEventListener('change', onInput);
-// customTip.addEventListener('change', inputCustomTip);
+customTip.addEventListener('change', inputCustomTip);
 numberOfPeople.addEventListener('change', people);
 calculateBtn.addEventListener('click', calculateTip);
 tipBtn.forEach((button) => button.addEventListener('click', selectTip));
