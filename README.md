@@ -4,16 +4,8 @@ A Tip Calculator App Using HTML for structure, CSS for styling and JavaScript fo
 
 ### Screenshot
 
-![App Screenshot]()
+- Screenshot: ![App Screenshot](/images/screenshot.png)
 
 ### Links
 
-- Live Site URL: [Add live site URL here]()
-
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
+- Live Site URL: [Tip Calculator](https://tip-calculator-app-zeta-sand.vercel.app/)
