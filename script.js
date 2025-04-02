@@ -1,7 +1,8 @@
 const bill = document.querySelector('.bill-input');
 const numberOfPeople = document.querySelector('.people-input');
 const tipBtn = document.querySelectorAll('.tip-btn');
-const peopleValidateText = document.querySelector('.validate-text');
+const peopleValidateText = document.querySelector('.validate-text-people');
+const billValidateText = document.querySelector('.validate-text-bill');
 const customTip = document.querySelector('.custom-tip');
 const calculateBtn = document.querySelector('.btn-calculate');
 const displayTipAmount = document.querySelector('.display-tip-amount');
@@ -14,11 +15,17 @@ let customTipValue = 0;
 
 resetBtn.disabled = true;
 peopleValidateText.style.display = 'none';
+billValidateText.style.display = 'none';
 
 const onInput = (e) => {
   billAmount = parseFloat(e.target.value) || 0;
   if (billAmount <= 0) {
-    alert("Bill can't be 0 or less");
+    billValidateText.style.display = 'flex';
+    billValidateText.style.color = '#ff4545';
+    bill.style.border = '2px solid #ff4545';
+  } else {
+    billValidateText.style.display = 'none';
+    bill.style.border = 'none';
   }
 
   checkResetState();
@@ -48,10 +55,10 @@ const people = (e) => {
   if (isNaN(peopleNumber) || peopleNumber < 1) {
     peopleValidateText.style.display = 'flex';
     peopleValidateText.style.color = '#ff4545';
-    numberOfPeople.style.border = '2px solid #ff4545'
-  } else if (peopleNumber >= 1) {
+    numberOfPeople.style.border = '2px solid #ff4545';
+  } else {
     peopleValidateText.style.display = 'none';
-    numberOfPeople.style.border = 'none'
+    numberOfPeople.style.border = 'none';
 
     return;
   }
@@ -61,6 +68,16 @@ const people = (e) => {
 
 // Calculate
 const calculateTip = (e) => {
+  if (
+    billAmount <= 0 ||
+    peopleNumber <= 0 ||
+    isNaN(billAmount) ||
+    isNaN(peopleNumber)
+  ) {
+    alert('Please fill in all fields with valid values.');
+    return;
+  }
+
   let tipPerPerson = tipAmount / peopleNumber;
   displayTipAmount.textContent = `$${tipPerPerson.toFixed(2)}`;
   displayTotalAmount.textContent = `$${(
@@ -107,9 +124,9 @@ const checkResetState = () => {
 checkResetState();
 
 // EventListeners
-bill.addEventListener('change', onInput);
-customTip.addEventListener('change', inputCustomTip);
-numberOfPeople.addEventListener('change', people);
+bill.addEventListener('input', onInput);
+customTip.addEventListener('input', inputCustomTip);
+numberOfPeople.addEventListener('input', people);
 calculateBtn.addEventListener('click', calculateTip);
 tipBtn.forEach((button) => button.addEventListener('click', selectTip));
 resetBtn.addEventListener('click', resetCalculation);
