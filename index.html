@@ -16,15 +16,16 @@
           <input type="text" placeholder="0" class="bill-input" />
           <p>Select Tip %</p>
           <div class="select-tip">
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>25%</button>
-            <button>50%</button>
-            <input type="text" placeholder="Custom" />
+            <button data-percent="5" class="tip-btn">5%</button>
+            <button data-percent="10" class="tip-btn">10%</button>
+            <button data-percent="15" class="tip-btn">15%</button>
+            <button data-percent="25" class="tip-btn">25%</button>
+            <button data-percent="50" class="tip-btn">50%</button>
+            <input type="text" placeholder="Custom" class="custom-tip"/>
           </div>
           <p>Number of People</p>
           <input type="text" placeholder="0" class="people-input" />
+          <button class="btn-calculate">CALCULATE</button>
         </div>
 
         <!-- Display Tip Section -->
@@ -48,9 +49,10 @@
               <div class="display-total-amount">$0.00</div>
             </div>
           </div>
-          <button class="reset">RESET</button>
+          <button class="btn-reset">RESET</button>
         </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

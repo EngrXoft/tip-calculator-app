@@ -61,10 +61,33 @@ input::placeholder {
   gap: 1rem;
 }
 
+.active {
+    background-color: var(--clr-primary-400);
+    color: var(--clr-primary-900);
+  }
+
+/* Buttons */
+.btn-reset {
+  background-color: var(--clr-primary-400);
+  width: 100%;
+  color: var(--clr-primary-900);
+}
+
+.btn-reset-disabled {
+  background-color: var(--clr-neutral-500);
+  cursor: not-allowed;
+}
+
+.btn-calculate {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
 /* inputs */
 .bill-input,
 .people-input {
   width: 100%;
+  text-align: right;
 }
 
 .calculate-tip {
@@ -138,10 +161,4 @@ button {
   font-size: 40px;
   font-weight: 700;
   color: var(--clr-primary-400);
-}
-
-.reset {
-  background-color: var(--clr-neutral-500);
-  width: 100%;
-  color: var(--clr-primary-900);
 }
